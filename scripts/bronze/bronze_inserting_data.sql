@@ -27,9 +27,9 @@ Usage Example:
 -- FULL LOAD
 CREATE OR ALTER PROCEDURE bronze.load_procedure AS
 BEGIN
-	DECLARE @bronze_start_time DATETIME, @bronze_end_time DATETIME;
+	DECLARE @batch_start_time DATETIME, @batch_end_time DATETIME;
 	DECLARE @start_time DATETIME, @end_time DATETIME;
-	SET @bronze_start_time = GETDATE();
+	SET @batch_start_time = GETDATE();
 	BEGIN TRY
 		PRINT '========================================';
 		PRINT 'Loading the Bronze Layer';
@@ -151,9 +151,9 @@ BEGIN
 		PRINT '========================================';
 	END CATCH
 
-	SET @bronze_end_time = GETDATE();
+	SET @batch_end_time = GETDATE();
 	PRINT 'Bronze Layer Execution Complete';
-	PRINT '-> Bronze Layer Duration: ' + CAST(DATEDIFF(millisecond, @bronze_start_time, @bronze_end_time) AS NVARCHAR) + 'ms';
+	PRINT '-> Bronze Layer Duration: ' + CAST(DATEDIFF(millisecond, @batch_start_time, @batch_end_time) AS NVARCHAR) + 'ms';
 END
 
 EXEC bronze.load_procedure;
