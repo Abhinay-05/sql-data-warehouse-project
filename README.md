@@ -74,21 +74,50 @@ For more details, refer to [docs/requirements.md](docs/requirements.md).
 
 ## 📂 Repository Structure
 ```
-data-warehouse-project/
+sql-data-warehouse-project/
 │
-├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
+├── data-analysis/                          # Advanced business and analytical SQL queries
+│   ├── 01_ChangeOverTime(Trends).sql       # Analyze trends and changes over time
+│   ├── 02_CumulativeAnalysis.sql           # Running totals and cumulative metrics
+│   ├── 03_PerformanceAnalysis.sql          # Product and business performance analysis
+│   ├── 04_PartToWholeAnalysis.sql          # Percentage contribution analysis
+│   ├── 05_DataSegmentation.sql             # Customer and data segmentation
+│   ├── 06_ReportCustomers.sql              # Customer-level analytical report
+│   └── 07_ReportProducts.sql               # Product-level analytical report
 │
-├── scripts/                            # SQL scripts for ETL and transformations
-│   ├── bronze/                         # Scripts for extracting and loading raw data
-│   ├── silver/                         # Scripts for cleaning and transforming data
-│   ├── gold/                           # Scripts for creating analytical models
+├── datasets/                               # Raw ERP and CRM CSV datasets
 │
-├── tests/                              # Test scripts and quality files
+├── docs/                                   # Project architecture and documentation
+│   └── data_architecture.png               # Medallion architecture diagram
 │
-├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
+├── exploratory-data-analysis/              # SQL scripts for exploring warehouse data
+│   ├── 01_ExploringDataSet.sql             # Database and dataset exploration
+│   ├── 02_MeasureExploration.sql           # Explore key business measures
+│   ├── 03_MagnitudeAnalysis.sql             # Analyze magnitude across dimensions
+│   └── 04_RankingAnalysis.sql               # Rank products and business entities
+│
+├── scripts/                                # Data warehouse and ETL SQL scripts
+│   │
+│   ├── bronze/                             # Raw data ingestion layer
+│   │   ├── bronze_ddl.sql                  # Create Bronze layer tables
+│   │   └── bronze_inserting_data.sql       # Load ERP and CRM source data
+│   │
+│   ├── silver/                             # Data cleansing and transformation layer
+│   │   ├── silver_ddl.sql                  # Create Silver layer tables
+│   │   └── silver_inserting_data.sql       # Clean, standardize, and load data
+│   │
+│   ├── gold/                               # Business-ready analytical layer
+│   │   └── gold_ddl.sql                    # Create fact and dimension models
+│   │
+│   └── initialize_database.sql             # Initialize DataWarehouse database
+│
+├── test/                                   # Data quality and validation scripts
+│   ├── gold_QoS.sql                        # Validate Gold layer data quality
+│   └── silver_QoS.sql                      # Validate Silver layer data quality
+│
+├── LICENSE                                 # MIT License
+└── README.md                               # Project overview and documentation
 ```
 ---
+
 
